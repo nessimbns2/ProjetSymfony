@@ -1,0 +1,14 @@
+<table border="1">
+{% for author in authors %}
+<tr>
+<td>{{author.id}}</td>
+<td>{{author.username}}</td>
+<td>{{author.email}}</td>
+<td>{{author.age}}</td>
+<td><a href="{{path('showauthbyid',{'id':author.id})}}">Show Details</td>
+<td><a href="{{path('deleteAuth',{'id':author.id})}}">Delete</td>
+<td><a href="{{path('updateauth',{'id':author.id})}}">Update</td>
+</tr>
+<br/>
+{% endfor %}
+</table>

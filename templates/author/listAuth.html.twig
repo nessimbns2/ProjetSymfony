@@ -1,0 +1,16 @@
+<table border=1>
+
+{% set x=0 %}
+{% for author in authors %}
+<tr>
+<td>{{author.id|upper()}}</td>
+<td>{{author.name}}</td>
+<td> {{author.nbBooks}}</td>
+</tr>
+{% set x=x+author.nbBooks %}
+{%else%}
+<h1>No author found !!!</h1>
+{% endfor %}
+
+</table>
+Nombre Totale des livres = {{x}} pour un totale de {{authors|length()}} autheurs

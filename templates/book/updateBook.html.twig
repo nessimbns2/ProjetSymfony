@@ -1,0 +1,16 @@
+{{form_start(bookform)}}
+<table>
+<tr>
+<td> {{form_label(bookform.title,"Book Title")}}</td>
+<td> {{form_widget(bookform.title)}}</td>
+</tr>
+<tr>
+<td> {{form_label(bookform.author,"Author")}} </td>
+<td> {{form_widget(bookform.author)}} </td>
+</tr>
+<tr>
+<td> {{form_label(bookform.enabled,"Is Enabled")}} </td>
+<td> {{form_widget(bookform.enabled)}} </td>
+</tr>
+</table>
+{{form_end(bookform)}}
