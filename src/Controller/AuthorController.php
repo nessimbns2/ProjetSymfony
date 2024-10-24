@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Author;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Form\AuthorType;
+use App\Repository\AuthorRepository;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class AuthorController extends AbstractController
@@ -95,6 +96,16 @@ class AuthorController extends AbstractController
         ]);
     }
 
+    #[Route('/listauthorSorted', name: 'listAuthorSorted')]
+    public function listAuthorSorted(AuthorRepository $authorsRepo): Response
+    {
+        $authors=$authorsRepo->findAuthorOrderByMail();
+
+        return $this->render('author/listAuth2.html.twig',[
+            'authors' =>$authors,
+        ]);
+        
+    }    
 
     #[Route('/updateauth/{id}', name: 'updateauth')]
     public function updateauth(ManagerRegistry $doctrine, Request $request,$id):Response

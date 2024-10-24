@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Book;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Form\BookType;
+use App\Repository\BookRepository;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class BookController extends AbstractController
@@ -80,6 +81,15 @@ class BookController extends AbstractController
 
         return $this->render('book/showbook.html.twig',[
             'book' =>$book,
+        ]);
+    }
+
+    #[Route('/listbookByAuthor/{id}', name: 'showbookbyidAuth')]
+    public function BookByAuthD( BookRepository $bookRepo,$id): Response
+    {
+        $book=$bookRepo->showBooksByAuthor($id);
+        return $this->render('book/booksByauth.html.twig',[
+            'books' =>$book,
         ]);
     }
 

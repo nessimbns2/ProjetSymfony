@@ -16,6 +16,13 @@ class AuthorRepository extends ServiceEntityRepository
         parent::__construct($registry, Author::class);
     }
 
+    public function findAuthorOrderByMail(){
+        $em=$this->getEntityManager();
+        $query=$em->createQuery('Select a From App\Entity\Author a ORDER BY a.email ASC');
+        $results = $query->getResult();
+        return $results;
+    }
+
     //    /**
     //     * @return Author[] Returns an array of Author objects
     //     */

@@ -1,0 +1,15 @@
+<table border="1">
+<h1> Liste des Livre de {{books[0].author.username}}</h1>
+{% for book in books %}
+<tr> 
+<td>{{book.id}}</td>
+<td>{{book.title}}</td>
+<td>{{book.pubDate|date('Y-m-d')}}</td>
+<td>{{book.enabled}}</td>
+<td><a href="{{path('showbookbyid',{'id':book.id})}}">Show Details</td>
+<td><a href="{{path('deleteBook',{'id':book.id})}}">Delete</td>
+<td><a href="{{path('updatebook',{'id':book.id})}}">Update</td>
+</tr>
+<br/>
+{% endfor %}
+</table>

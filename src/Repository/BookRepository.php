@@ -16,6 +16,17 @@ class BookRepository extends ServiceEntityRepository
         parent::__construct($registry, Book::class);
     }
 
+    public function listBookByAuthor($id){
+        $entityManager=$this->getEntityManager();
+        $query=$entityManager->createQuery('Select b From App\Entity\Book b JOIN b.author a WHERE a.id=:id')
+        ->setParameter('id',$id);
+        return $query->getResult();
+    }
+
+    public function showBooksByAuthor($id){
+        return $this->createQueryBuilder('b')->join('b.author','a')->addSelect('a')->where('a.id=:id')->setParameter('id',$id)->getQuery()->getResult();}
+    
+
     //    /**
     //     * @return Book[] Returns an array of Book objects
     //     */
